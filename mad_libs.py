@@ -29,10 +29,14 @@ def fill_in_blanks():
 		template.insert(i + counter ,user_inputs[i])
 		counter += 1 
 
+def print_story():
+	ascii_art(title)
+	print(" ")
+	print("".join(template))
+	print(" ")
+
 
 ascii_art("Mad Libs")
 get_user_inputs()
 fill_in_blanks()
-ascii_art(title)
-print("".join(template))
-
+print_story()
