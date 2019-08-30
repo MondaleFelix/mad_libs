@@ -8,26 +8,20 @@ r = requests.get(api_url)
 data = r.json()
 
 title = data["title"]
-template = data["value"]
+template = data["value"][:-1]
 blanks = data["blanks"]
+user_inputs = []
+
 
 def ascii_art(phrase):
 	subprocess.call("figlet " + phrase, shell=True)
 
-ascii_art(title)
-
-
-
-user_inputs = []
-get_user_inputs()
 
 def get_user_inputs():
 	for blank in blanks:
 		user_input = input("Enter " + blank + ": ")
 		user_inputs.append(user_input)
 
-
-fill_in_blanks()
 
 def fill_in_blanks():
 	counter = 1
@@ -36,7 +30,9 @@ def fill_in_blanks():
 		counter += 1 
 
 
-
-
-print(template)
+ascii_art("Mad Libs")
+get_user_inputs()
+fill_in_blanks()
+ascii_art(title)
+print("".join(template))
 
